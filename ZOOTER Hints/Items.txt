@@ -24,3 +24,5 @@ Farores Wind
 Trade Item
 Big Poe
 Biggoron
+Goron Tunic
+Zora Tunic

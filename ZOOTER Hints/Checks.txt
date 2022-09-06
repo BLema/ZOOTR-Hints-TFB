@@ -2,7 +2,6 @@
 Central Pillar
 Toilet
 Hammer Chest
-20 Skulls
 Wasteland
 Goron Pottery
 Pierre
@@ -19,8 +18,6 @@ Right Hand
 1500 Archery
 Treasure Game
 King Zora
-Chickens
-Boomerang Chest
 Valley HR
 Skull Kid
 Shadow Pot

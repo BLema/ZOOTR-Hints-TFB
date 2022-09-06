@@ -2,64 +2,108 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:behaviors="clr-namespace:WPFTextBoxAutoComplete;assembly=WPFTextBoxAutoComplete"
-        Title="ZOOTR Hints" Height="619" Width="439" MaxWidth="456" MaxHeight="650" MinWidth="439" MinHeight="600" ResizeMode="CanMinimize">
-    <Grid Name="g" Margin="0,0,-0.667,-18.333" Height="617" VerticalAlignment="Top">
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="39" Margin="0,492,0,0" VerticalAlignment="Top" Width="424"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="192" Margin="0,229,0,0" VerticalAlignment="Top" Width="424"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="58" Margin="0,172,0,0" VerticalAlignment="Top" Width="424"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="174" VerticalAlignment="Top" Width="424"/>
+        Title="ZOOTR Hints" Height="760" Width="439" MaxWidth="456" MaxHeight="800" MinWidth="439" MinHeight="693" ResizeMode="CanMinimize">
+    <Grid Name="g" Margin="0,0,-1,0" Height="675" VerticalAlignment="Top">
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="192" Margin="0,453,0,0" VerticalAlignment="Top" Width="154"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="149" Margin="0,304,0,0" VerticalAlignment="Top" Width="277"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="227" Margin="0,77,0,0" VerticalAlignment="Top" Width="424"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="424" Margin="0,2,0,0"/>
+        <!--<Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="193" Margin="0,427,0,0" VerticalAlignment="Top" Width="424"/>-->
 
-        <Label x:Name="itemslbl" Content="Items:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="59" FontSize="18" Margin="3,-4,0,0"/>
-        <Label x:Name="biggoron" Content="Biggoron:" HorizontalAlignment="Left" Margin="5,17,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
+        <Label Content="Steps:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,20,0,0"/>
+        <Label Content="Taken:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1,46,0,0"/>
+        <Label Content="POWER" HorizontalAlignment="Left" Height="29" Margin="49,0,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="57,23,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" TextChanged="NumTest" MaxLength="2" FontSize="14" Background="White" BorderBrush="#FFF18883" FontWeight="Bold"/>
+        <Label Content="WISDOM" HorizontalAlignment="Left" Height="29" Margin="185,0,0,0" VerticalAlignment="Top" Width="62" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="196,23,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" MaxLength="2" TextChanged="NumTest" FontSize="14" BorderBrush="#FF6B85D4" FontWeight="Bold"/>
+        <Label Content="COURAGE" HorizontalAlignment="Left" Height="29" Margin="324,0,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="338,23,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" MaxLength="2" TextChanged="NumTest" FontSize="14" BorderBrush="#FF2AB042" FontWeight="Bold"/>
+        <TextBox x:Name="pwrCount" Text="0" HorizontalAlignment="Left" Height="23" Margin="57,48,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" MaxLength="2" FontSize="14"  BorderBrush="#FFF18883" FontWeight="Bold" IsReadOnlyCaretVisible="True" IsEnabled="False"/>
+        <TextBox x:Name="wisCount" Text="0" HorizontalAlignment="Left" Height="23" Margin="196,48,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" MaxLength="2" FontSize="14" BorderBrush="#FF6B85D4" FontWeight="Bold" IsReadOnlyCaretVisible="True" IsEnabled="False"/>
+        <TextBox x:Name="crgCount" Text="0" HorizontalAlignment="Left" Height="23" Margin="338,48,0,0" VerticalAlignment="Top" Width="40" TextAlignment="Center" MaxLength="2" FontSize="14" BorderBrush="#FF2AB042" FontWeight="Bold" IsReadOnlyCaretVisible="True" IsEnabled="False"/>
+
+        <Label x:Name="woth_Copy" Content="Path Of:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="144" FontSize="18" Margin="4,75,0,0"/>
+        <TextBox x:Name="Area" Text="{Binding SelectedItem.Check, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}"
+            behaviors:AutoCompleteBehavior.AutoCompleteStringComparison="InvariantCultureIgnoreCase"
+            HorizontalAlignment="Left" Height="23" Margin="5,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" 
+            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" KeyDown="Check_Down" FontFamily="Segoe UI Semibold" FontSize="14"/>
+        <Label x:Name="to" Content="of" HorizontalAlignment="Left" Margin="137,99,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="31"/>
+        <Button Content="PWR" HorizontalAlignment="Left" Margin="160,104,0,0" VerticalAlignment="Top" Width="38" Click="Triforce_Click" Background="#FFE67272"/>
+        <Button Content="WIS" HorizontalAlignment="Left" Margin="198,104,0,0" VerticalAlignment="Top" Width="38" Click="Triforce_Click" Background="#FF5B8FCF"/>
+        <Button Content="CRG" HorizontalAlignment="Left" Margin="236,104,0,0" VerticalAlignment="Top" Width="38" Click="Triforce_Click" Background="#FF6FDA57"/>
+        <TextBox x:Name="Found_Path" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Rewards}" 
+            HorizontalAlignment="Left" Height="23" Margin="280,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" 
+            KeyDown="Found_KeyDown" TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
+
+        <ListView x:Name="pathView" HorizontalAlignment="Left" Height="175" Margin="5,126,0,0" VerticalAlignment="Top" Width="270" KeyDown="Delete_Item" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Padding="0" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Segoe UI Semibold" FontSize="14" SelectionChanged="PathView_SelectionChanged">
+            <ListView.Resources>
+                <Style TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="140"
+                        DisplayMemberBinding="{Binding region}"/>
+                    <GridViewColumn Width="120"
+                        DisplayMemberBinding="{Binding triforce}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListBox x:Name="found_listbox_path" HorizontalAlignment="Left" Height="175" Margin="280,126,0,0" VerticalAlignment="Top" Width="136" KeyDown="Delete_Item" FontFamily="Segoe UI Semibold"/>
+
+        <Label x:Name="woth" Content="Way of the Wanderer:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="182" FontSize="18" Margin="1,304,0,0"/>
+        <TextBox x:Name="WOTH" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}" 
+            HorizontalAlignment="Left" Height="28" Margin="4,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" KeyDown="WOTH_KeyDown"
+            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
+        <TextBox x:Name="Found" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Rewards}" 
+            HorizontalAlignment="Left" Height="28" Margin="149,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" 
+            KeyDown="Found_KeyDown" TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
+        <ListBox x:Name="found_listbox" HorizontalAlignment="Left" Height="84" Margin="149,364,0,0" VerticalAlignment="Top" Width="123" KeyDown="Delete_Item" FontFamily="Segoe UI Semibold"/>
+        <ListBox x:Name="woth_listBox" HorizontalAlignment="Left" Height="84" Margin="4,364,0,0" VerticalAlignment="Top" Width="144" KeyDown="Delete_Item" FontSize="14" FontFamily="Segoe UI Semibold"/>
+
+        <Label x:Name="barren" Content="Foolish:" HorizontalAlignment="Left" Margin="4,454,0,0" VerticalAlignment="Top" FontSize="18" Width="71" Height="34"/>
+
+        <TextBox x:Name="Foolish" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}" 
+            HorizontalAlignment="Left" Height="28" Margin="7,482,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" KeyDown="WOTH_KeyDown"
+            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
+        <ListBox x:Name="fool_listBox" HorizontalAlignment="Left" Height="127" Margin="7,510,0,0" VerticalAlignment="Top" Width="139" KeyDown="Delete_Item" FontSize="14" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="itemslbl" Content="Other:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="83" FontSize="18" Margin="275,295,0,0"/>
+        <Label x:Name="biggoron" Content="20 Skulls:" HorizontalAlignment="Left" Margin="280,315,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
         <TextBox x:Name="Biggoron" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-                 behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-                 HorizontalAlignment="Left" Height="22" Margin="87,21,0,0" TextWrapping="Wrap" 
-                 VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
-                 GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
-        <Label x:Name="frogs" Content="Frogs Song:" HorizontalAlignment="Left" Margin="5,37,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
-        <TextBox x:Name="Frogs" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-            HorizontalAlignment="Left" Height="22" Margin="87,43,0,0" TextWrapping="Wrap" 
+            HorizontalAlignment="Left" Height="22" Margin="319,340,0,0" TextWrapping="Wrap" 
             VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
             GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
-        <Label x:Name="mask" Content="Skull Mask:" HorizontalAlignment="Left" Margin="5,59,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
-        <TextBox x:Name="Mask" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-            HorizontalAlignment="Left" Height="22" Margin="87,65,0,0" TextWrapping="Wrap" 
+        <Label x:Name="oot" Content="OoT Song:" HorizontalAlignment="Left" Margin="280,357,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
+        <TextBox x:Name="OOT" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Songs}" 
+            HorizontalAlignment="Left" Height="24" Margin="319,382,0,0" TextWrapping="Wrap" 
             VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
             GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
-        <Label x:Name="skulls" Content="Skulls:" HorizontalAlignment="Left" Height="31" Margin="5,77,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="1.006,0.43" FontSize="16"/>
-        <Label x:Name="thirty" Content="30:" HorizontalAlignment="Left" Height="31" Margin="48,97,0,0" VerticalAlignment="Top" Width="34" FontSize="14"/>
-        <TextBox x:Name="Thirty" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-                 behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-                 HorizontalAlignment="Left" Height="24" Margin="87,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" 
-                 TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="forty" Content="40:" HorizontalAlignment="Left" Height="31" Margin="48,119,0,0" VerticalAlignment="Top" Width="34" FontSize="14"/>
-        <TextBox x:Name="Forty" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-            HorizontalAlignment="Left" Height="24" Margin="87,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99"
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="fifty" Content="50:" HorizontalAlignment="Left" Height="31" Margin="48,143,0,0" VerticalAlignment="Top" Width="34" FontSize="14"/>
-        <TextBox x:Name="Fifty" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}" 
-            HorizontalAlignment="Left" Height="24" Margin="87,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" 
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
+        <Label x:Name="nocturne" Content="Burning Kak:" HorizontalAlignment="Left" Margin="280,401,0,0" VerticalAlignment="Top" Width="87" FontSize="14" Height="30"/>
+        <TextBox x:Name="OOT_Copy" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
+            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Songs}" 
+            HorizontalAlignment="Left" Height="24" Margin="317,425,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
+            GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
 
         <TextBox x:Name="checkLoc" Text="{Binding SelectedItem.Check, UpdateSourceTrigger=PropertyChanged}"
             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Checks}"
             behaviors:AutoCompleteBehavior.AutoCompleteStringComparison="InvariantCultureIgnoreCase"
-            HorizontalAlignment="Left" Height="23" Margin="191,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" 
+            HorizontalAlignment="Left" Height="23" Margin="193,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" 
             TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" KeyDown="Check_Down" FontFamily="Segoe UI Semibold" FontSize="14"/>
         <TextBox x:Name="has" Text="{Binding SelectedItem.Has, UpdateSourceTrigger=PropertyChanged}"
             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Items}"
-            HorizontalAlignment="Left" Height="23" Margin="320,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
+            HorizontalAlignment="Left" Height="23" Margin="322,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96"
             TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold" KeyDown="Check_In"/>
-        <Label x:Name="colon" Content=":" HorizontalAlignment="Left" Margin="308,16,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="13"/>
-
-        <ListView x:Name="checkView" HorizontalAlignment="Left" Height="128" Margin="191,43,0,0" VerticalAlignment="Top" Width="225" KeyDown="Delete_Item" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Padding="0" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Segoe UI Semibold">
+        <Label x:Name="colon" Content=":" HorizontalAlignment="Left" Margin="310,455,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="13"/>
+        <ListView x:Name="checkView" HorizontalAlignment="Left" Height="128" Margin="193,482,0,0" VerticalAlignment="Top" Width="225" KeyDown="Delete_Item" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Padding="0" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="Segoe UI Semibold">
             <ListView.Resources>
                 <Style TargetType="{x:Type GridViewColumnHeader}">
                     <Setter Property="Visibility" Value="Collapsed" />
@@ -68,79 +112,27 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="120"
-                                    DisplayMemberBinding="{Binding Location}"/>
+                        DisplayMemberBinding="{Binding Location}"/>
                     <GridViewColumn Width="100"
-                                    DisplayMemberBinding="{Binding Has}"/>
+                        DisplayMemberBinding="{Binding Has}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <Label x:Name="Songslbl" Content="Songs:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="63" FontSize="18" Margin="4,169,0,0"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="5,198,0,0" VerticalAlignment="Top" Width="81" Height="24" FontFamily="Segoe UI Semibold">
-            <ComboBoxItem IsSelected="True" Content="Ocarina"/>
-            <ComboBoxItem Content="Nocturne"/>
-        </ComboBox>
-        <TextBox x:Name="OOT" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Songs}" 
-            HorizontalAlignment="Left" Height="24" Margin="87,198,0,0" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
-            GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
         <TextBox x:Name="songLoc" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding SongChecks}"
             behaviors:AutoCompleteBehavior.AutoCompleteStringComparison="InvariantCultureIgnoreCase"
-            HorizontalAlignment="Left" Height="24" Margin="191,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+            HorizontalAlignment="Left" Height="24" Margin="192,615,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112"
             TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" KeyDown="Check_Down" FontFamily="Segoe UI Semibold" FontSize="14"/>
         <TextBox x:Name="Song" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
             behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Songs}" 
-            HorizontalAlignment="Left" Height="24" Margin="320,198,0,0" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="96" TextChanged="All_TextChanged"
+            HorizontalAlignment="Left" Height="24" Margin="309,615,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Width="108" TextChanged="All_TextChanged"
             GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold" KeyDown="Check_In"/>
+        <Label x:Name="colon1_Copy3" Content=":" HorizontalAlignment="Left" Margin="300,610,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="13"/>
 
-        <Label x:Name="woth" Content="Way of the Hero:" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="144" FontSize="18" Margin="4,224,0,0"/>
-        <TextBox x:Name="WOTH" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}" 
-            HorizontalAlignment="Left" Height="28" Margin="32,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" KeyDown="WOTH_KeyDown"
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="Found" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Rewards}" 
-            HorizontalAlignment="Left" Height="28" Margin="201,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" 
-            KeyDown="Found_KeyDown" TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <ListBox x:Name="found_listbox" HorizontalAlignment="Left" Height="127" Margin="201,284,0,0" VerticalAlignment="Top" Width="153" KeyDown="Delete_Item" FontFamily="Segoe UI Semibold"/>
-        <ListBox x:Name="woth_listBox" HorizontalAlignment="Left" Height="127" Margin="32,284,0,0" VerticalAlignment="Top" Width="160" KeyDown="Delete_Item" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
-        <Label x:Name="barren" Content="Foolish:" HorizontalAlignment="Left" Margin="5,438,0,0" VerticalAlignment="Top" FontSize="18" Width="71" Height="34"/>
-        <TextBox x:Name="barren3" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}"
-            HorizontalAlignment="Left" Height="26" Margin="80,429,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="barren1" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}"
-            HorizontalAlignment="Left" Height="26" Margin="80,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <TextBox x:Name="barren2" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Locations}"
-            HorizontalAlignment="Left" Height="26" Margin="216,443,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135"
-            TextChanged="All_TextChanged" GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
-        <Label x:Name="colon1_Copy3" Content=":" HorizontalAlignment="Left" Margin="308,193,0,0" VerticalAlignment="Top" FontSize="14" Height="29" Width="13"/>
-        <Label x:Name="medals" Content="Prizes:" HorizontalAlignment="Left" Height="32" Margin="4,492,0,0" VerticalAlignment="Top" Width="100" FontSize="18"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="71" Margin="0,421,0,0" VerticalAlignment="Top" Width="424"/>
-
-        <Button x:Name="lists" Content="Lists" HorizontalAlignment="Left" Margin="10,545,0,44" Width="113" Click="Lists_Click"/>
-        <Button x:Name="clear" Content="Clear" Margin="300,546,18,44" Click="Clear_Click"/>
-        <Label x:Name="FM" Content="Forest In:" HorizontalAlignment="Left" Margin="59,496,0,0" VerticalAlignment="Top" Width="74" FontSize="14" Height="30"/>
-        <TextBox x:Name="forest" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Dungeons}" 
-            HorizontalAlignment="Left" Height="22" Margin="126,501,0,0" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
-            GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-        <Label x:Name="ST" Content="Shadow Has:" HorizontalAlignment="Left" Margin="225,496,0,0" VerticalAlignment="Top" Width="91" FontSize="14" Height="30"/>
-        <TextBox x:Name="shadow" Text="{Binding TestText, UpdateSourceTrigger=PropertyChanged}"
-            behaviors:AutoCompleteBehavior.AutoCompleteItemsSource="{Binding Prizes}" 
-            HorizontalAlignment="Left" Height="22" Margin="314,501,0,0" TextWrapping="Wrap" 
-            VerticalAlignment="Top" Width="99" TextChanged="All_TextChanged"
-            GotKeyboardFocus="KeyboardFocus" MouseDoubleClick="MouseEnter" FontSize="14" FontFamily="Segoe UI Semibold"/>
-
+        <Button x:Name="lists" Content="Lists" HorizontalAlignment="Left" Margin="6,674,0,-46" Width="113" Click="Lists_Click" Height="47" VerticalAlignment="Top"/>
+        <Button x:Name="clear" Content="Clear" Margin="301,675,17,-46" Click="Clear_Click" RenderTransformOrigin="0.448,5.789" Height="46" VerticalAlignment="Top"/>
+       
 
     </Grid>
 </Window>
