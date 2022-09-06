@@ -1,0 +1,104 @@
+﻿Locations:
+Kokiri Forest
+Field 
+Hyrule Castle 
+Lake Hylia 
+Mountain Trail 
+Crater 
+Domain 
+Fountain 
+Valley 
+Gerudo Fortress 
+Market 
+Kakariko Village 
+Graveyard        
+Desert Colossus 
+Sacred Meadow 
+Lon Lon Ranch 
+River 
+Lost Woods 
+Goron City 
+Outside Ganon
+
+Dungeons:
+Deku Tree 
+Dodongo's Cavern 
+Jabu Jabu's Belly 
+Forest Temple 
+Fire Temple      
+Water Temple 
+Shadow Temple 
+Spirit Temple 
+Ice Cavern 
+Bottom of the Well
+Training Grounds 
+Temple of Time 
+Ganon's Castle
+
+Items:
+Bomb Bag 
+Hammer 
+Hookshot 
+Bow 
+Hover Boots   
+Din's Fire 
+Boomerang 
+Letter 
+Strength 
+Farore's Wind 
+Light Arrows
+Mirror Shield 
+Iron Boots 
+Scale 
+Wallet 
+Key 
+Biggoron 
+Bottle
+Kokiri Sword 
+Magic Meter 
+Slingshot 
+Boss Key 
+Lens of Truth 
+Fire Arrows
+
+Songs:
+Saria's Song 
+Zelda's Lullaby 
+Sun's Song 
+Time (Song of) 
+Storms (Song of)
+Epona's Song 
+Minuet of Forest 
+Requiem of Spirit 
+Nocturne of Shadow 
+Serenade of Water
+Prelude of Light 
+Bolero of Fire
+
+Checks:
+WT River 
+WT Gilded 
+FT Floormaster 
+1500 Archery
+Toilet 
+Child Fishing 
+Adult Fishing 
+Skull Mask 
+Top Fire 
+20 Skulls 
+Wasteland
+Goron Pottery 
+Pierre 
+Well Deadhand 
+GTG Final Prize 
+Treasure Game 
+Sun Song Grave
+Composer Grave 
+Darunia 
+Desert Bean 
+Big Poes 
+Shooting the Sun 
+Icy Waters
+Left Hand (Col) 
+Right Hand (Col)
+
